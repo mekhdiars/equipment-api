@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Equipment\StoreRequest;
+use App\Http\Requests\Equipment\UpdateRequest;
 use App\Http\Resources\EquipmentResource;
 use App\Models\Equipment;
 use Illuminate\Http\Request;
@@ -38,9 +39,10 @@ class EquipmentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateRequest $request, Equipment $equipment)
     {
-        //
+        $equipment->update($request->validated());
+        return new EquipmentResource($equipment->load('type'));
     }
 
     /**
