@@ -8,6 +8,7 @@ use App\Http\Requests\Equipment\UpdateRequest;
 use App\Http\Resources\EquipmentResource;
 use App\Models\Equipment;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class EquipmentController extends Controller
 {
@@ -48,8 +49,9 @@ class EquipmentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Equipment $equipment): Response
     {
-        //
+        $equipment->delete();
+        return response()->noContent();
     }
 }
