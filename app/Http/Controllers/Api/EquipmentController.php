@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Equipment\StoreRequest;
+use App\Http\Resources\EquipmentResource;
+use App\Models\Equipment;
 use Illuminate\Http\Request;
 
 class EquipmentController extends Controller
@@ -18,9 +21,10 @@ class EquipmentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request): EquipmentResource
     {
-        //
+        $equipment = Equipment::create($request->validated());
+        return new EquipmentResource($equipment->load('type'));
     }
 
     /**

@@ -10,8 +10,6 @@ class Equipment extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'equipments';
-
     protected $fillable = [
         'equipment_type_id',
         'serial_number',

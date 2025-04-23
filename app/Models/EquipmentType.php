@@ -12,7 +12,7 @@ class EquipmentType extends Model
         'mask_sn'
     ];
 
-    public function equipments(): HasMany
+    public function equipment(): HasMany
     {
         return $this->hasMany(Equipment::class);
     }
