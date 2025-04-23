@@ -30,9 +30,9 @@ class EquipmentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Equipment $equipment): EquipmentResource
     {
-        //
+        return new EquipmentResource($equipment->load('type'));
     }
 
     /**
